@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+  <!-- Made by "@oem:(" !-->
+     <title>Webcraft</title>
+	   <link rel="icon" href="Eaglercraft.jpg" type="image/x-icon">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button to Link</title>
+    <script>
+        function goToLink() {
+            // Get the link from the dropdown
+            var selectElement = document.getElementById("mySelect");
+            var selectedValue = selectElement.value;
+
+            if (selectedValue) {
+                // Open the link
+                window.location.href = selectedValue;
+            } else {
+                alert("Please select a link from the dropdown.");
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+        }
+
+        .custom-select-wrapper {
+            position: relative;
+            user-select: none;
+            flex-grow: 1;
+            min-width: 200px;
+        }
+
+        .custom-select-trigger {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            background-color: #1f2937;
+            border-width: 1px;
+            border-color: #4b5563;
+            border-radius: 0.375rem;
+            color: #f9fafb;
+            cursor: pointer;
+            transition: border-color 0.15s ease-in-out, shadow-sm 0.15s ease-in-out;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .custom-select-trigger:hover, .custom-select-wrapper:focus-within .custom-select-trigger {
+            border-color: #6b7280;
+            box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2);
+        }
+
+        .custom-select-trigger span {
+            margin-right: 0.5rem;
+        }
+
+        .custom-select-trigger svg {
+            height: 1rem;
+            width: 1rem;
+            fill: currentColor;
+            color: #d1d5db;
+        }
+
+        .custom-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: auto;
+            z-index: 20;
+            background-color: #1f2937;
+            border-width: 1px;
+            border-color: #4b5563;
+            border-radius: 0.375rem;
+            margin-top: 0.25rem;
+            overflow: auto;
+            max-height: 200px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out, transform 0.15s ease-in-out;
+        }
+
+        .custom-select-wrapper.open .custom-options {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .custom-options li {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            color: #f9fafb;
+            cursor: pointer;
+            transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .custom-options li:hover, .custom-options li.selected {
+            background-color: #6b7280;
+            color: #ffffff;
+        }
+
+        .custom-select-wrapper select {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            background-color: #388e3c;
+            transform: translateY(0);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #link1, #link2 {
+            color: #818cf8; /* Tailwind's violet-400 */
+            text-decoration: underline;
+            margin-top: 1rem;
+            display: none; /* Initially hidden */
+        }
+
+        #link1:hover, #link2:hover {
+            color: #a78bfa; /* Tailwind's violet-300 on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <p>
+        Select a link and click the button:
+        <div class="custom-select-wrapper" id="mySelectWrapper">
+            <div class="custom-select-trigger" id="mySelectTrigger">
+                <span>Select a link...</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </div>
+            <div class="custom-options" id="mySelectOptions">
+                <select id="mySelect" class="hidden">
+                    <option value="">Select a link...</option>
+                    <option value="Eaglercraft_1.12_Offline_en_US.html">Eaglercraft 1.12</option>
+                    <option value="EaglercraftX_1.8_u50_Offline_Signed.html">Eaglercraftx 1.8</option>
+                </select>
+                <ul>
+                    <li data-value="Eaglercraft_1.12.html">Eaglercraft 1.12</li>
+                    <li data-value="EaglercraftX_1.8.html">EaglercraftX 1.8</li>
+                </ul>
+            </div>
+        </div>
+    </p>
+    <button onclick="goToLink()">Go to Link</button>
+
+
+    <script>
+        const selectWrapper = document.getElementById('mySelectWrapper');
+        const selectTrigger = document.getElementById('mySelectTrigger');
+        const selectOptions = document.getElementById('mySelectOptions');
+        const selectElement = document.getElementById('mySelect');
+        const link1Element = document.getElementById('link1');
+        const link2Element = document.getElementById('link2');
+
+
+        selectTrigger.addEventListener('click', () => {
+            selectWrapper.classList.toggle('open');
+            if (selectWrapper.classList.contains('open')) {
+                const triggerRect = selectTrigger.getBoundingClientRect();
+                selectOptions.style.top = triggerRect.bottom + 'px';
+                selectOptions.style.left = triggerRect.left + 'px';
+                selectOptions.style.width = triggerRect.width + 'px';
+            }
+        });
+
+        selectOptions.addEventListener('click', (event) => {
+            if (event.target.tagName === 'LI') {
+                const value = event.target.dataset.value;
+                const text = event.target.textContent;
+                selectElement.value = value;
+                selectTrigger.querySelector('span').textContent = text;
+                selectWrapper.classList.remove('open');
+
+                // Show/hide links based on selection
+                link1Element.style.display = value === "Eaglercraft_1.12_Offline_en_US.html" ? "block" : "none";
+                link2Element.style.display = value === "EaglercraftX_1.8_u50_Offline_Signed.html" ? "block" : "none";
+
+                selectElement.dispatchEvent(new Event('change'));
+            }
+        });
+
+        selectElement.addEventListener('change', () => {
+            const selectedValue = selectElement.value;
+            const selectedText = selectElement.options[selectElement.selectedIndex].text;
+            selectTrigger.querySelector('span').textContent = selectedText;
+
+             // Show/hide links based on selection in dropdown
+            link1Element.style.display = selectedValue === "Eaglercraft_1.12.html" ? "block" : "none";
+            link2Element.style.display = selectedValue === "EaglercraftX_1.8.html" ? "block" : "none";
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!selectWrapper.contains(event.target) && !selectOptions.contains(event.target)) {
+                selectWrapper.classList.remove('open');
+            }
+        });
+
+        selectElement.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === 'Space') {
+                selectWrapper.classList.toggle('open');
+                 if (selectWrapper.classList.contains('open')) {
+                    const triggerRect = selectTrigger.getBoundingClientRect();
+                    selectOptions.style.top = triggerRect.bottom + 'px';
+                    selectOptions.style.left = triggerRect.left + 'px';
+                    selectOptions.style.width = triggerRect.width + 'px';
+                }
+            } else if (event.key === 'Escape') {
+                selectWrapper.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
